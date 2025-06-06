@@ -1,15 +1,13 @@
 package ui;
 
+import gestion.GestorRecursos;
 import java.awt.BorderLayout;
 import java.time.format.DateTimeFormatter;
-
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-
-import gestion.GestorRecursos;
 
 public class PanelEmergencias extends JPanel {
     private final GestorRecursos gestorRecursos;
@@ -23,7 +21,7 @@ public class PanelEmergencias extends JPanel {
         
       // Configurar tabla
       modelo = new DefaultTableModel(
-          new Object[]{"ID", "Gravedad", "Ubicación", "Hora Recepción"}, 0) {
+          new Object[]{"ID", "Gravedad", "Ubicación", "Hora Recepción", "Estado"}, 0) {
           @Override
           public boolean isCellEditable(int row, int column) {
               return false;
@@ -44,7 +42,8 @@ public class PanelEmergencias extends JPanel {
                 e.getId(),
                 e.getGravedad(),
                 e.getUbicacion(),
-                e.getHoraRecepcion().format(formatter)
+                e.getHoraRecepcion().format(formatter),
+                e.getEstado()
             });
         });
     }

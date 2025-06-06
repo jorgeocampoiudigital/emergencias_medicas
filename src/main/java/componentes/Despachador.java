@@ -1,13 +1,12 @@
 package componentes;
 
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
 import dominio.Ambulancia;
 import dominio.Emergencia;
 import dominio.enumeraciones.EstadoEmergencia;
 import gestion.GestorRecursos;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class Despachador implements Runnable {
     private final BlockingQueue<Emergencia> colaEmergencias;
@@ -18,7 +17,7 @@ public class Despachador implements Runnable {
     public Despachador(BlockingQueue<Emergencia> colaEmergencias) {
         this.colaEmergencias = colaEmergencias;
         this.gestorRecursos = GestorRecursos.getInstancia();
-        this.executor = Executors.newFixedThreadPool(5);
+        this.executor = Executors.newFixedThreadPool(8);
     }
     
     @Override
